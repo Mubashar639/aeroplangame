@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <p>Enter Username
+        <input id="s" name="a" type="text"></p>
+    <p>Enter password
+        <input id="d" name="f" type="text"></p>
+    <div>
+        <button onclick="submit()">Add user</button>
+        <button onclick="deleteuser()">delete user</button>
+        <button onclick="getuser()">get user</button></div>
+
+    <table border="1" id="demo">
+        <tr>
+            <th>Name</th>
+            <th>password</th>
+        </tr>
+
+    </table>
+    <hr>
+    <button onclick="cFile()">create file</button>
+    <button onclick="gFile()">get data file</button>
+    <button onclick="dFile()">delete file</button></div>
+    <hr>
+    <div id="filedata"></div>
+    <hr>
+    <form action="/profile" method="post" enctype="multipart/form-data">
+    <input type="file" name="profilepic" multiple id="mupic">
+    <input type="submit" value="upload">
+    </form>
+        <hr>
+        <hr>
+        <form action="/loadpage" method="POST">
+        <tr>
+            <td>Enter your name</td>
+            <td><input type="text" name="username"></td>
+
+        </tr>
+        <tr>
+            <td>Enter your password</td>
+            <td><input type="text" name="password"></td>
+            <button>  submit </button>
+        </tr>
+        
+        </form>
+
+
+    <script>
+        function submit() {
+            fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-type": "Application/JSON"
+                },
+                body: JSON.stringify(
+                    {
+                        name: s.value,
+                        password: d.value
+                    }
+                )
+            })
+                .then(function (resp) {
+                    console.log(resp);
+                })
+        }
+        getuser = () => {
+            fetch('/getuser', {
+                method: 'GET'
+            }).then(function (all) {
+                console.log(all);
+                return all.json();
+            })
+                .then(function (all) {
+                    console.log(all);
+                    // data=all;
+
+                    for (i = 0; i < all.length; i++) {
+
+                        demo.innerHTML += "<tr><td>" + all[i].name + "</td><td>" + all[i].password + "\n" + "</td></tr>";
+                    }
+                    //     var data=all.filter(element => {
+                    //           return    " <tr><td>"+element.name+"</td><td>"+element.password+"</td></tr>"
+
+                    // });
+                    // demo.innerHTML= all.forEach(element => {
+                    //     element.name +  " || " + element.password
+                    // });
+
+                })
+        }
+        deleteuser = () => {
+
+        }
+        function cFile() {
+            fetch("/create", {
+                method: "POST",
+                headers: {
+                    "Content-type": "Application/JSON"
+                },
+
+            }).then(function (data) {
+                console.log(data)
+                filedata.innerHTML = ""
+
+            })
+        }
+        function dFile() {
+            fetch("/remove", {
+                method: "delete",
+                headers: {
+                    "Content-type": "Application/JSON"
+                },
+
+            }).then(function (data) {
+                return data.text()
+                filedata.innerHTML = ""
+
+            }).then(function(data){
+                console.log(data);
+            }).catch(function(err){
+                console.log(err)
+            })
+        }
+        function gFile() {
+            fetch("/getdata", {
+                method: "GET",
+                headers: {
+                    "Content-type": "Application/JSON"
+                },
+
+            }).then(function (data) {
+                return data.text();
+            }).then(function(data){
+                console.log(data);
+            }).catch(function (data) {
+                console.log(data);
+                filedata.innerHTML = data
+            })
+        }
+
+    </script>
+</body>
+
+</html>
