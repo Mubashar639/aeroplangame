@@ -87,7 +87,7 @@ let configration=multer.diskStorage({
 
 let upload= multer({storage:configration})
 
-app.use(express.static("./build "))
+app.use(express.static("./static "))
 // app.get("/mydata",(req,res)=>{
 //     res.end('data is geting from root ')
 
