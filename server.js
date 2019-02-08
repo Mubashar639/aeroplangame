@@ -87,7 +87,7 @@ let configration=multer.diskStorage({
 
 let upload= multer({storage:configration})
 
-app.use(express.static("./static "))
+app.use(express.static("./static"))
 // app.get("/mydata",(req,res)=>{
 //     res.end('data is geting from root ')
 
@@ -147,7 +147,8 @@ app.use((err, req, res, next) => {  // 4 parameter in error hendler middle ware
     res.status(500).send("something in going wrong")
 })
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 9090
+
 app.listen(PORT, function () {
     console.log("Server is running");
 });
