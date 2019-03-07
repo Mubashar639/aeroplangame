@@ -1,7 +1,12 @@
 {
-  "main.css": "static/css/main.d04ab0f7.css",
-  "main.css.map": "static/css/main.d04ab0f7.css.map",
-  "main.js": "static/js/main.d97b5872.js",
-  "main.js.map": "static/js/main.d97b5872.js.map",
-  "static\\media\\logo.svg": "static/media/logo.ee7cd8ed.svg"
+  "main.css": "static/css/main.944a55cf.css",
+  "main.css.map": "static/css/main.944a55cf.css.map",
+  "main.js": "static/js/main.f6245977.js",
+  "main.js.map": "static/js/main.f6245977.js.map",
+  "static\\media\\bird3.gif": "static/media/bird3.a8a93845.gif",
+  "static\\media\\bird4.gif": "static/media/bird4.e3874d2e.gif",
+  "static\\media\\game-over.png": "static/media/game-over.626dca97.png",
+  "static\\media\\goli.png": "static/media/goli.1e46f361.png",
+  "static\\media\\plane.png": "static/media/plane.62b65baf.png",
+  "static\\media\\sky.jpg": "static/media/sky.7721cd49.jpg"
 }
